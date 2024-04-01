@@ -1,0 +1,41 @@
+﻿
+@{
+    ViewData["Title"] = "Category";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@model List<Category>
+@await Html.PartialAsync("Header")
+
+
+<div class="md:mt-12 ld:mt-12 mt-5">
+    <label class="ld:text-4xl md:text-4xl sm:text-2xl text-xl font-bold md:ml-52 ld:ml-52 ml-4">
+        Categories
+    </label>
+</div>
+
+
+
+<div class=" md:my-10 lg:my-10 my-4 md:mx-48 lg:mx-40 px-10">
+    @foreach (var category in Model)
+    {
+    @* <Link to={`/Recipes/${data.catagories}`} key={index}> *@
+        <a asp-action="ViewCategory" asp-route-id="@category.Catagories" class="col-md-4 mb-4" style="text-decoration: none; color: black;">
+    <div class="inline-block  md:mx-4 lg:mx-7 mx-3 mb-10">
+        <div class="rounded-full overflow-hidden">
+            <img class="md:w-44 lg:w-44 md:h-44 lg:h-44 w-24 h-24 object-cover"
+                 src="@category.Src"
+                />
+        </div>
+        <p class="text-center font-bold md:text-2xl ld:text-2xl md:mt-3 ld:mt-3 mt-1">
+            @category.Catagories
+        </p>
+    </div>
+    </a>
+    
+    }
+</div>
+
+
+
+@await Html.PartialAsync("Footer")

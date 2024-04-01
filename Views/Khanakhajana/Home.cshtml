@@ -1,0 +1,185 @@
+﻿@model HomeViewModel
+
+<style>
+    
+    .scrollbar-hidden::-webkit-scrollbar {
+        display: none;
+    }
+
+    .scrollbar-hidden {
+        scrollbar-width: none;
+    }
+
+    .star-container {
+        color: orange;
+        font-size: 24px;
+    }
+
+    .card-img-top {
+        width: 100%;
+        height: 300px;
+        object-fit: cover;
+    }
+</style>
+
+
+@await Html.PartialAsync("Header")
+
+<style>
+    .slideshow-container {
+        width:1300px;
+        
+        position: relative;
+        margin: auto;
+    }
+
+    .mySlides {
+        display: none;
+
+    }
+
+    .slide-img {
+        width: 100%;
+        height: 50%;
+    }
+</style>
+
+
+    <div class="slideshow-container">
+        <div class="mySlides fade">
+        <img class="slide-img" style="height: 600px; " src="~/image/wallpaperflare.com_wallpaper (6).jpg" />
+        </div>
+
+        <div class="mySlides fade">
+        <img class="slide-img" style="height: 600px; " src="~/image/wallpaperflare.com_wallpaper (1).jpg" />
+        </div>
+
+        <div class="mySlides fade">
+        <img class="slide-img" style="height: 600px; " src="~/image/wallpaperflare.com_wallpaper (8).jpg" />
+    </div>
+
+    <div class="mySlides fade">
+        <img class="slide-img" style="height: 600px; " src="~/image/wallpaperflare.com_wallpaper (3).jpg" />
+    </div>
+    
+    
+    </div>
+
+    <script>
+        var slideIndex = 0;
+        showSlides();
+
+        function showSlides() {
+            var i;
+            var slides = document.getElementsByClassName("mySlides");
+            for (i = 0; i < slides.length; i++) {
+                slides[i].style.display = "none";
+            }
+            slideIndex++;
+            if (slideIndex > slides.length) { slideIndex = 1 }
+            slides[slideIndex - 1].style.display = "block";
+            setTimeout(showSlides, 5000); // Change image every 2 seconds
+        }
+    </script>
+
+
+
+
+
+
+
+
+
+<div class="md:mt-12 ld:mt-12 mt-5">
+    <label class="ld:text-3xl md:text-3xl sm:text-2xl text-lg font-bold md:ml-52 ld:ml-52 ml-4">
+        Popular Categories
+    </label>
+</div>
+
+
+<div class="overflow-x-auto whitespace-nowrap justify-center md:my-10 lg:my-10 my-4 md:mx-48 lg:mx-48 scrollbar-hidden">
+    @foreach (var category in Model.Categories)
+    {
+        <a asp-action="ViewCategory" asp-route-id="@category.Catagories" class="col-md-4 mb-4" style="text-decoration: none; color: black;">
+        <div class="inline-block md:mx-4 lg:mx-4 mx-3">
+            <div class="rounded-full overflow-hidden">
+                <img class="md:w-44 lg:w-44 md:h-44 lg:h-44 w-24 h-24 object-cover" src="@category.Src" />
+            </div>
+            <p class="text-center font-bold md:text-2xl ld:text-2xl md:mt-3 ld:mt-3 mt-1">
+                @category.Catagories
+            </p>
+        </div>
+        </a>
+    }
+</div>
+
+<div class="md:mt-12 ld:mt-12 mt-5">
+    <label class="ld:text-3xl md:text-3xl sm:text-2xl text-lg font-bold md:ml-52 ld:ml-52 ml-4">
+        Super Delicious
+
+    </label>
+</div>
+
+<div class="grid grid-cols-2 md:grid-cols-4 gap-x-4 mx-48 mt-8">
+    @foreach (var recipe in Model.Recipes.OrderBy(x => Guid.NewGuid()))
+    {
+        <a asp-action="ViewRecipe" asp-route-id="@recipe.Id" class="col-md-4 mb-4" style="text-decoration: none; color: black;">
+            <div class="max-w-xs mx-auto overflow-hidden shadow-lg rounded-lg mt-4">
+                <img class="w-full card-img-top" src="@recipe.Src" alt="@recipe.Id" />
+                <div class="p-4">
+                    <div class="flex items-center star-container">
+                        @Html.Raw(RenderStars(recipe.Star))
+                    </div>
+                    <h2 class="text-gray-800 text-lg font-semibold px-1">
+                        @recipe.Name
+                    </h2>
+                </div>
+            </div>
+        </a>
+    }
+</div>
+
+<div class="text-center" style="background-color: #ffc7b3;">
+    <div class="font-bold md:text-6xl ld:text-6xl text-3xl normal-case font-serif md:pt-16 ld:pt-16 pt-5 ">
+        <p>Deliciousness</p>
+        <p>to your inbox</p>
+    </div>
+    <div class="font-semibold my-6">
+        <p>Enjoy weekly hand picked recipes and recommendations</p>
+        <p>recommendations</p>
+    </div>
+    <div class="flex items-center justify-center flex-1">
+        <form target="_blank" action="https://formsubmit.co/yashrajvekariya007@gmail.com" method="POST">
+            <div class="form-group">
+                <textarea placeholder="Your Message" class="form-control w-96" name="message"  required></textarea>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            </div>
+
+            <button type="submit"
+                    class="bg-orange-500 text-white     px-4 py-3 text-base ">
+                Send
+            </button>
+
+
+
+        </form>
+    </div>
+
+@await Html.PartialAsync("Footer")
+
+@functions {
+    public string RenderStars(float rating)
+    {
+        int starRating = (int)rating;
+        string stars = "";
+        for (int i = 0; i < starRating; i++)
+        {
+            stars += "★";
+        }
+        for (int i = 0; i < 5 - starRating; i++)
+        {
+            stars += "☆";
+        }
+        return stars;
+    }
+}

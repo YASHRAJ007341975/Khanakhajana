@@ -1,0 +1,103 @@
+﻿@model Khanakhajana.Models.Recipe
+
+
+@{
+    ViewData["Title"] = "ViewRecipe";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@await Html.PartialAsync("Header")
+
+@if (Model != null)
+{
+    <div class="container mx-auto mt-10">
+        <div class="flex items-center justify-between">
+            <h1 class="text-4xl font-bold mx-5">@Model.Name</h1>
+            <!-- Save button -->
+            <div class="flex items-center">
+                <svg xmlns="http://www.w3.org/2000/svg"
+                     class="h-10 w-9 cursor-pointer mr-10"
+                     fill="white"
+                     viewBox="0 0 24 24"
+                     stroke="currentColor"
+                     onclick="handleClick()">
+                    <path stroke-linecap="round"
+                          stroke-linejoin="round"
+                          stroke-width="1"
+                          d="M5 3a2 2 0 012-2h10a2 2 0 012 2v18l-7-3-7 3V3z" />
+                </svg>
+            </div>
+        </div>
+
+        <p class="mt-12 mx-5">@Model.Text</p>
+
+        <img src="@Model.Src"
+             alt=""
+             class="h-[550px] w-full mt-3" />
+
+        <div class="flex gap-5 md:mt-7 ld:mt-7 md:mx-10 ld:mx-10 mx-4 mt-3">
+            <div class="text-slate-400 border-r-2 md:px-4 ld:px-4 px-2 md:text-sm ld:text-sm text-xs">
+                <label>PREP Time</label>
+                <br />
+                <span class="text-black">@Model.PrepTime</span>
+            </div>
+            <div class="text-slate-400 border-r-2 md:px-4 ld:px-4 px-2 md:text-sm ld:text-sm text-xs">
+                <label>COOK Time</label>
+                <br />
+                <span class="text-black">@Model.CookingTime</span>
+            </div>
+            <div class="text-slate-400 border-r-2 md:px-4 ld:px-4 px-2 md:text-sm ld:text-sm text-xs">
+                <label>SERVING</label>
+                <br />
+                <span class="text-black">@Model.Serving</span>
+            </div>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 mt-4">
+            <div class="py-4">
+                <h2 class="text-4xl font-bold mx-10">Ingredients</h2>
+                <div class="mt-2 mx-20">
+                    @foreach (var ingredient in Model.Ingredients)
+                    {
+                        <div class="py-2 mt-1 text-lg">@ingredient</div>
+                    }
+                </div>
+            </div>
+
+            <div class="py-4">
+                <h2 class="text-4xl  font-bold mx-10">Nutrition Facts</h2>
+                <div class="mt-5 mx-16 bg-gray-200 text-lg rounded-xl py-2">
+                    @foreach (var factIndex in Enumerable.Range(0, Model.NutritionFacts[0].Count))
+                    {
+                        <div class="flex justify-between py-1 px-5 border-b">
+                            <p>@Model.NutritionFacts[0][factIndex]</p>
+                            <p>@Model.NutritionFacts[1][factIndex]</p>
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+
+        <div class="mx-9">
+            <h2 class="text-4xl font-bold mx-2 mb-5">Instructions</h2>
+            @foreach (var instructionIndex in Enumerable.Range(0, Model.Instructions.Count))
+            {
+                int j = instructionIndex + 1;
+                <div class="flex px-10 mb-5 ">
+                    <div class="flex items-center justify-center h-5 w-5 rounded-full bg-orange-500 mt-1">
+                        <span class="text-white px-2">@j</span>
+                    </div>
+                    <div class="items-center px-2 text-xl">
+                        <p>@Model.Instructions[instructionIndex]</p>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+}
+else
+{
+    <p>No recipe found with ID 1.</p>
+}
+
+@await Html.PartialAsync("Footer")

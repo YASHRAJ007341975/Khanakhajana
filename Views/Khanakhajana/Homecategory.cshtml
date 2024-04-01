@@ -1,0 +1,34 @@
+﻿@{
+    ViewData["Title"] = "Homecategory";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@model List<Category>
+<style>
+    .scrollbar-hidden::-webkit-scrollbar {
+        display: none;
+    }
+
+    .scrollbar-hidden {
+        scrollbar-width: none; 
+    }
+</style>
+<div class="md:mt-12 ld:mt-12 mt-5">
+    <label class="ld:text-3xl md:text-3xl sm:text-2xl text-lg font-bold md:ml-52 ld:ml-52 ml-4">
+        Popular Categories
+    </label>
+</div>
+
+<div class="overflow-x-auto whitespace-nowrap justify-center md:my-10 lg:my-10 my-4 md:mx-48 lg:mx-48 scrollbar-hidden">
+    @foreach (var category in Model)
+    {
+        <div class="inline-block md:mx-4 lg:mx-4 mx-3">
+            <div class="rounded-full overflow-hidden">
+                <img class="md:w-44 lg:w-44 md:h-44 lg:h-44 w-24 h-24 object-cover" src="@category.Src"  />
+            </div>
+            <p class="text-center font-bold md:text-2xl ld:text-2xl md:mt-3 ld:mt-3 mt-1">
+                @category.Catagories
+            </p>
+        </div>
+    }
+</div>

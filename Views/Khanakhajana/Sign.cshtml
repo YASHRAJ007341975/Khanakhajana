@@ -1,0 +1,102 @@
+﻿@model RegisterModel;
+
+@{
+    ViewData["Title"] = "Sign";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<link rel="stylesheet" href="~/css/styles.css" asp-append-version="true" />
+<link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+
+<div class="min-h-screen relative flex items-center justify-center py-20 px-4 sm:px-6 lg:px-8">
+    <div class="max-w-md w-full space-y border border-zinc-950 p-12 rounded-lg relative">
+
+        <button type="button" class="bg-white text-orange-400" id="back">
+            <svg class="w-5 mr-2" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                <path fill-rule="evenodd" d="M7.707 14.707a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 1.414L5.414 9H17a1 1 0 110 2H5.414l2.293 2.293a1 1 0 010 1.414z" clip-rule="evenodd"></path>
+            </svg>
+        </button>
+        <script>
+            document.getElementById("back").addEventListener("click", function () {
+                window.history.back();
+            });
+        </script>
+        <div>
+            <h2 class="mt-5 text-4xl font-bold text">SIGN UP</h2>
+        </div>
+
+        <form class="mt-8 space-y-6" method="post">
+            <input type="hidden" name="remember" defaultValue="true" />
+
+            <div>
+                <div class="relative">
+                    <span class="absolute inset-y-0 -left-3 pl-3 flex ">
+                        <img src="~/image/user.png" alt="User Icon" class="mb-4 h-8 w-10 align-self-auto" />
+                    </span>
+                    <input id="username"
+                           type="text"
+                           asp-for="Name"
+                           class="pl-11 mb-4 border-solid border-t-0 border-l-0 border-r-0 border-b-stone-400 border-b-2 w-full px-10 py-2 sm:text-1.5xl focus:outline-none"
+                           placeholder="Full Name" />
+                    <span asp-validation-for="Name" class="text-danger"></span>
+                </div>
+            </div>
+
+            <div>
+                <div class="relative">
+                    <span class="absolute inset-y-0 -left-2 pl-3 flex items-centerfixed">
+                        <img src="~/image/email.png" alt="Email Icon" class="mb-3 h-9 w-8 align-self-auto" />
+                    </span>
+                    <input id="email-address"
+                           type="email"
+                           autoComplete="email"
+                           asp-for="Email"
+                           class="pl-11 mb-4 border-solid border-t-0 border-l-0 border-r-0 border-b-stone-400 border-b-2 w-full px-10 py-2 sm:text-1.5xl focus:outline-none"
+                           placeholder="Email" />
+                    <span asp-validation-for="Email" class="text-danger"></span>
+                </div>
+            </div>
+            <div>
+                <div class="relative">
+                    <span class="absolute inset-y-0 -left-3 pl-3 flex items-centerfixed">
+                        <img src="~/image/lock.png" alt="Password Icon" class="mb-4 h-8 w-10 align-self-auto" />
+                    </span>
+                    <input id="password"
+                           type="password"
+                           asp-for="Password"
+                           class="pl-11 mb-4 border-solid border-t-0 border-l-0 border-r-0 border-b-stone-400 border-b-2 w-full px-10 py-2 sm:text-1.5xl focus:outline-none"
+                           placeholder="Password" />
+                    <span asp-validation-for="Password" class="text-danger"></span>
+                </div>
+            </div>
+            <div>
+                <div class="relative">
+                    <span class="absolute inset-y-0 -left-3 pl-3 flex items-centerfixed">
+                        <img src="~/image/lock2.png" alt="Password Icon" class="mb-4 h-8 w-10 align-self-auto" />
+                    </span>
+                    <input id="cpassword"
+                           type="password"
+                           asp-for="ConfirmPassword"
+                           class="pl-11 mb-4 border-solid border-t-0 border-l-0 border-r-0 border-b-stone-400 border-b-2 w-full px-10 py-2 sm:text-1.5xl focus:outline-none"
+                           placeholder="Conform Password" />
+                    <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
+
+                    <button type="button"
+                            class="absolute inset-y-0 right-0 mt-1 mb-4 mr-2 rounded-full p-1 focus:outline-none opacity-35"
+
+                    </button>
+                </div>
+            </div>
+
+            <div>
+                <button type="submit"
+                        class="mt-2 group relative w-full inline-flex justify-center items-center py-2 px-4 border border-transparent text-lg font-medium rounded-md text-white bg-orange-500 focus:outline-none">
+                    Sign up
+                </button>
+            </div>
+
+        </form>
+
+    </div>
+</div>
+

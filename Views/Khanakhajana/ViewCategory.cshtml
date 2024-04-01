@@ -1,0 +1,75 @@
+﻿@model List<Recipe>
+
+@functions {
+    public string RenderStars(float rating)
+    {
+        int starRating = (int)rating; // Convert float to int
+        string stars = "";
+        for (int i = 0; i < starRating; i++)
+        {
+            stars += "★"; // Unicode character for solid star
+        }
+        for (int i = 0; i < 5 - starRating; i++)
+        {
+            stars += "☆"; // Unicode character for empty star
+        }
+        return stars;
+    }
+}
+
+<style>
+    .star-container {
+        color: orange; /* Change star color to orange */
+        font-size: 24px; /* Change star size to 24px */
+    }
+
+    .card-img-top {
+        width: 100%; /* Set image width to 100% */
+        height: 300px; /* Set a fixed height for the images */
+        object-fit: cover; /* Maintain aspect ratio and cover the entire container */
+    }
+</style>
+
+
+
+@await Html.PartialAsync("Header")
+
+
+
+
+<div class="md:mt-12 ld:mt-12 mt-5">
+    <label class="ld:text-3xl md:text-3xl sm:text-2xl text-lg font-bold md:ml-52 ld:ml-52 ml-4">
+        Recipes
+
+    </label>
+</div>
+
+<div class="grid grid-cols-2 md:grid-cols-4 gap-x-4 mx-48 mt-4">
+    @foreach (var recipe in Model.OrderBy(x => Guid.NewGuid()))
+    {
+        <a asp-action="ViewRecipe" asp-route-id="@recipe.Id" class="col-md-4 mb-4" style="text-decoration: none; color: black;">
+            <div class="max-w-xs mx-auto overflow-hidden shadow-lg rounded-lg mt-4">
+                <img class="w-full card-img-top" src="@recipe.Src" alt="@recipe.Id" />
+                <div class="p-4">
+                    <div class="flex items-center star-container">
+                        @Html.Raw(RenderStars(recipe.Star))
+                    </div>
+                    <h2 class="text-gray-800 text-lg font-semibold px-1">
+                        @recipe.Name
+                    </h2>
+                </div>
+            </div>
+        </a>
+    }
+</div>
+
+
+
+</div>
+
+@await Html.PartialAsync("Footer")
+
+
+
+
+

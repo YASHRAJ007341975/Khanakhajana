@@ -1,0 +1,227 @@
+﻿@{
+    ViewData["Title"] = "Home";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<link rel="stylesheet" href="~/css/styles.css" asp-append-version="true" />
+<link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+
+
+<head>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f0f0f0;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 20px auto;
+            padding: 0 20px;
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .card-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 20px;
+        }
+
+        .card {
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            position: relative;
+            transition: transform 0.3s ease;
+        }
+
+            .card:hover {
+                transform: translateY(-10px);
+            }
+
+            .card img {
+                width: 100%;
+                height: 200px;
+                object-fit: cover;
+            }
+
+        .card-content {
+            padding: 20px;
+        }
+
+        .card-title {
+            font-size: 18px;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .card-description {
+            font-size: 14px;
+            color: #666;
+        }
+    </style>
+</head>
+
+
+<nav class="p-4 top-0 left-0 right-0 bg-white shadow-md sticky z-10">
+    <div class="flex justify-between items-center ">
+        <div class="flex items-center ">
+            <div class="flex items-center -mt-2 mt-0">
+                <a>
+
+                    <img src="~/image/icons8-facebook-48 (1).png" class="w-8 h-8" />
+                </a>
+                <a>
+                    <img src="~/image/icons8-twitter-logo-48.png" class="w-8 h-8 ml-5" />
+                </a>
+                <a>
+                    <img src="~/image/icons8-instagram-logo-48.png" class="w-8 h-8 ml-5" />
+                </a>
+                <a>
+                    <img src="~/image/icons8-youtube-logo-48.png" class="w-8 h-8 ml-5" />
+                </a>
+            </div>
+        </div>
+        <div class="flex items-center justify-center flex-1 w-96 mt-3 md:mt-0 ld:mt-0">
+        </div>
+        <div class="flex justify-end">
+            <a href="/" type="submit" class="bg-orange-500 text-white md:px-4 lg:px-4 md:py-1 lg:py-1 rounded md:ml-4 lg:ml-4 md:mt-0 lg:mt-0 md:mr-0 lg:mr-0 -mt-28">
+                Login
+            </a>
+            <a href="/Khanakhajana/Sign" class="bg-orange-500 text-white md:px-4 lg:px-4 md:py-1 lg:py-1 rounded md:ml-4 lg:ml-4 md:mt-0 lg:mt-0 -mt-28">
+                Register
+            </a>
+            <a href="/Khanakhajana/Profile" class="bg-orange-500 text-white md:px-4 lg:px-4 md:py-1 lg:py-1 rounded md:ml-4 lg:ml-4 md:mt-0 lg:mt-0 -mt-28">
+                Profile
+            </a>
+        </div>
+
+    </div>
+</nav>
+
+<div class="flex justify-center ld:mt-4 md:mt-4 -mt-5">
+    <img src="~/image/logo.png" alt="Logo" class="md:mt-5 ld:mt-5 w-36 h-24 md:w-auto md:h-auto ld:w-auto ld:h-auto mt-12" />
+</div>
+
+<div class="flex justify-center text-lg font-bold md:mt-2 mt-2">
+    <a asp-action="Home" asp-controller="Khanakhajana"
+       class="md:px-16 md:pb-4 ld:px-16 ld:pb-4 pb-2 px-6">
+        Homepage
+    </a>
+
+    <a asp-action="Category" asp-controller="Khanakhajana"
+       class="md:px-16 md:pb-4 ld:px-16 ld:pb-4 pb-2 px-6">
+        Categories
+    </a>
+    <a asp-action="Favourite" asp-controller="Khanakhajana"
+       class="md:px-16 md:pb-4 ld:px-16 ld:pb-4 pb-2 px-6">
+        Favourites
+    </a>
+    <a asp-action="Recipe" asp-controller="Khanakhajana"
+       class="md:px-16 md:pb-4 ld:px-16 ld:pb-4 pb-2 px-6">
+        Contact Us
+    </a>
+</div>
+
+
+
+
+<div class="container">
+
+    <div class="card-container">
+        <div class="card">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQc7lJq1HUllEc_MAtGNVgcBGkrm5A931bR9w&s" alt="Cheese Fondue">
+            <div class="card-content">
+                <h2 class="card-title">Cheese Fondue</h2>
+                <p class="card-description">A classic cheese fondue recipe that is easy and sure to impress guests. </p>
+            </div>
+        </div>
+        <div class="card">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTicJstuRu6Ph6mwdDsTvaisy7il3_sI45Iuw&s" alt="Bao Buns">
+            <div class="card-content">
+                <h2 class="card-title">Bao Buns</h2>
+                <p class="card-description">A classic Bao Buns recipe that is easy and sure to impress guests. </p>
+            </div>
+        </div>
+        <!-- Add more cards here -->
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+    <footer class=" py-4 text-gray-500 bottom-0">
+        <div class="container mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-2 ">
+            <div class="col-span-1 md:col-span-2 lg:col-span-1 lg:mr-4 md:ml-28 flex flex-col justify-center ml-5">
+                <div class="flex  md:justify-start">
+                    <img src="~/image/logo.png" alt="Logo" class="mt-5 h-40" />
+                </div>
+                <div class="mt-5 pr-28">
+                </div>
+            </div>
+
+            <div class="md:flex ml:flex md:mt-11 ml:mt-11 md:flex-row md:justify-end md:me-24 lg:gap-12 ml-5 ">
+                <div class="md:ml-6">
+                    <h3 class="flex mt-5 md:mt-0 text-lg font-semibold ">
+                        About
+                    </h3>
+                    <a href="">About Us</a>
+                    <br />
+                    <a href="">Careers</a>
+                    <br />
+                    <a href="">Contact </a>
+                    <br />
+                    <a href="">Feedback</a>
+                    <br />
+                </div>
+                <div class="md:ml-8 ">
+                    <h3 class="mt-5 md:mt-0 text-lg font-semibold">Legal</h3>
+                    <a href="">Terms</a>
+                    <br />
+                    <a href="">Conditions</a>
+                    <br />
+                    <a href="">Cookies</a>
+                    <br />
+                    <a href="">Copyright</a>
+                    <br />
+                </div>
+
+                <div class="md:ml-8">
+                    <h3 class="mt-5 md:mt-0 text-lg font-semibold">Follow</h3>
+                    <br />
+                    <div class="flex space-x-4 mt-2">
+                        <a href="facebook">
+                            <img src="~/image/icons8-facebook-48 (1).png" class="w-8 h-8" />
+                            Facebook
+                        </a>
+                        <a href="twitter">
+                            <img src="~/image/icons8-twitter-logo-48.png" class="w-8 h-8" />
+                            Twitter
+                        </a>
+                        <a href="instagram">
+                            <img src="~/image/icons8-instagram-logo-48.png" class="w-8 h-8" />
+                            Instagram
+                        </a>
+                        <a href="youtube">
+                            <img src="~/image/icons8-youtube-logo-48.png" class="w-8 h-8" />
+                            Youtube
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+

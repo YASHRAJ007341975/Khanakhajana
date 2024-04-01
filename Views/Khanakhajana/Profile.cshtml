@@ -1,0 +1,120 @@
+﻿@model ProfileModel;
+@{
+    ViewData["Title"] = "Profile";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<link rel="stylesheet" href="~/css/styles.css" asp-append-version="true" />
+<link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+
+<div class="py-10 ">
+    <label class="ld:text-3xl md:text-3xl sm:text-2xl text-lg font-bold ml-16">
+        Profile
+    </label>
+</div>
+<div class="flex items-center">
+    <div class="ml-52 w-56 h-56 relative">
+        <div id="profileImageContainer" class="rounded-full overflow-hidden w-full h-full">
+            <img id="profileImage" src="~/image/user.png" class="w-full h-full" />
+        </div>
+        <input type="file" id="fileInput" style="display: none;" accept="image/*" />
+
+        <button onclick="document.getElementById('fileInput').click()"
+                class="absolute bottom-0 right-0 bg-orange-500 text-white px-3 py-1 rounded-md m-2">
+            Edit
+        </button>
+    </div>
+
+</div>
+
+
+<script>
+    function deletePhoto() {
+        // Reset the profile image to the default one
+        document.getElementById('profileImage').src = '~/image/delete.png';
+
+        // Redirect to a new page after deleting the photo
+        window.location.href = '/Profile.cshtml'; // Replace 'redirect-page-url' with the actual URL you want to redirect to
+    }
+
+    document.getElementById('fileInput').addEventListener('change', function () {
+        const file = this.files[0];
+        if (file) {
+            const reader = new FileReader();
+            reader.onload = function (e) {
+                document.getElementById('profileImage').src = e.target.result;
+            };
+            reader.readAsDataURL(file);
+        }
+    });
+</script>
+
+
+<form method="post">
+
+
+    <div class="ml-64 flex mt-7">
+        <div class="">
+            <label class="">FULL NAME</label>
+            <div class="relative w-96 mt-4">
+                <input type="text"
+                       asp-for="Fullname"
+                       class="pl-6 border-solid border-t-0 border-l-0 border-r-0 border-b-stone-400 border-b-2 focus:outline-none focus:border-b-black w-full" />
+                <img src="~/image/user.png" class="h-5 w-6 mb-5 -mt-6" />
+            </div>
+        </div>
+
+        <div class="ml-28">
+            <div class="">
+                <label class="">USER NAME</label>
+                <div class="relative w-96 mt-4">
+                    <input type="text"
+                           asp-for="Username"
+                           class="pl-6 border-solid border-t-0 border-l-0 border-r-0 border-b-stone-400 border-b-2 focus:outline-none focus:border-b-black w-full" />
+                    <img src="~/image/arroba.png" class="h-5 w-5 mb-5 -mt-6 " />
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="ml-64 flex mt-10">
+        <div class="">
+            <label class="">EMAIL</label>
+
+            <div class="relative w-96 mt-4">
+
+                <input type="email"
+                       asp-for="Email"
+                       class="pl-6 border-solid border-t-0 border-l-0 border-r-0 border-b-stone-400 border-b-2 focus:outline-none focus:border-b-black w-full" />
+
+                <img src="~/image/email.png" class="h-5 w-5 mb-5 -mt-6" />
+            </div>
+        </div>
+
+        <div class="ml-28">
+            <div class="">
+                <label class="">PASSWORD</label>
+                <div class=" relative w-96 mt-4">
+                    <input type="password"
+                           asp-for="Password"
+                           class="pl-6 border-solid border-t-0 border-l-0 border-r-0 border-b-stone-400 border-b-2 focus:outline-none focus:border-b-black w-full" />
+                    <img src="~/image/lock.png" class="h-5 w-6 mb-5 -mt-6" />
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="flex justify-between md:ml-52 ld:ml-52 ml-4 ">
+
+        <div class="py-10 mr-96">
+            <button type="submit" class="bg-orange-500 text-white md:px-4 ld:px-4 md:py-1 ld:py-1 rounded md:ml-4 ld:ml-4 md:mt-0 ld:mt-0 -mt-28">
+                Save
+            </button>
+
+        </div>
+
+    </div>
+
+
+</form>

@@ -1,0 +1,80 @@
+﻿
+@{
+    ViewData["Title"] = "header";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<header>
+    <nav class="p-4  top-0 left-0 right-0  bg-white shadow-md sticky z-10 ">
+        <div class="md:flex ld:flex justify-between items-center ">
+            <div class="flex items-center ">
+                <div class="flex items-center -mt-2 md:mt-0 ld:mt-0">
+                    <a href="">
+                        <img class="text-black mr-4 md:ml-10 ld:ml-10 w-7 h-7 " src="~/image/icons8-facebook-48 (1).png" />
+                    </a>
+                    <a href="twitter">
+                        <img class="text-black mr-4 w-7 h-7" src="~/image/icons8-twitter-logo-48.png" />
+                    </a>
+                    <a href="instagram">
+                        <img class="text-black mr-4 w-7 h-7" src="~/image/icons8-instagram-logo-48.png" />
+                    </a>
+                    <a href="youtube">
+                        <img class="text-black mr- w-7 h-7" src="~/image/icons8-youtube-logo-48.png" />
+                    </a>
+                </div>
+            </div>
+            <div class="flex items-center justify-center flex-1 w-96 mt-3 md:mt-0 ld:mt-0">
+                <div class="relative">
+                    <input type="text"
+                           placeholder="Search"
+                           class="bg-gray-800 text-white rounded-full py-1 pr-8 pl-4  md:w-96 ld:w-96 focus:outline-none focus:bg-gray-900"
+                           value=" "
+                           onChange={handleChange} />
+
+                    <span class="absolute right-2  mt-2 mr-3 w-2 h-2">
+                        <img class="text-white" src="~/image/search.png" />
+                    </span>
+                </div>
+            </div>
+            <div class="flex justify-end ">
+                <a asp-action="Profile">
+                    <img class="h-8 w-8 ml-4" src="~/image/account.png" />
+
+
+                </a>
+
+                <a asp-action="Login" class="bg-orange-500 text-white md:px-4 ld:px-4 md:py-1 ld:py-1 rounded md:ml-4  ld:ml-4  md:mt-0 ld:mt-0 md:mr-0 ld:mr-0 -mt-28">
+                    Logout
+                </a>
+
+
+            </div>
+        </div>
+    </nav>
+</header>
+
+
+<div class="flex justify-center ld:mt-4 md:mt-4 -mt-5">
+    <img alt="Logo" class="md:mt-5 ld:mt-5 w-36 h-24 md:w-auto md:h-auto ld:w-auto ld:h-auto mt-12" src="~/image/logo.png" />
+</div>
+
+<div class="flex justify-center text-lg font-bold md:mt-2 mt-2">
+    <a asp-action="Home" asp-controller="Khanakhajana"
+       class="md:px-16 md:pb-4 ld:px-16 ld:pb-4 pb-2 px-6">
+        Homepage
+    </a>
+
+    <a asp-action="Category" asp-controller="Khanakhajana"
+       class="md:px-16 md:pb-4 ld:px-16 ld:pb-4 pb-2 px-6">
+        Categories
+    </a>
+    <a asp-action="Favourite" asp-controller="Khanakhajana"
+       class="md:px-16 md:pb-4 ld:px-16 ld:pb-4 pb-2 px-6">
+        Favourites
+    </a>
+    <a asp-action="Contact" asp-controller="Khanakhajana"
+       class="md:px-16 md:pb-4 ld:px-16 ld:pb-4 pb-2 px-6">
+        Contact Us
+    </a>
+</div>
+
